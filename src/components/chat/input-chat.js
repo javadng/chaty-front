@@ -1,6 +1,6 @@
 import SendRoundedIcon from '@mui/icons-material/SendRounded';
 import { useState } from 'react';
-import EVENTS from '../../../../server/utils/events';
+import EVENTS from '../../config/events';
 import { useSockets } from '../../context/socketContext';
 
 const InputChat = props => {
