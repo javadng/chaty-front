@@ -1,0 +1,24 @@
+{
+  "extends": ["next/babel", "next/core-web-vitals", "next"],
+  "rules": {
+    "react/react-in-jsx-scope": "off",
+    "react/prop-types": "off",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "no-console": ["warn", { "allow": ["warn", "error"] }],
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ]
+  },
+  "plugins": ["react", "react-hooks", "prettier"],
+  "settings": {
+    "prettier": {
+      "printWidth": 80,
+      "singleQuote": true,
+      "trailingComma": "es5"
+    }
+  }
+}

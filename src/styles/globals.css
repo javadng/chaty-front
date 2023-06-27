@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Tilt Neon';
+  src: url('../assets/fonts/TiltNeon-Regular.ttf') format('truetype');
+}
+
+body {
+  color: #000;
+  background: #fff;
+  font-family: 'Tilt Neon', cursive;
+}
+
+[data-theme='dark'],
+[data-theme='dark'] body {
+  color: #fff;
+  background: #475569;
+}
+.input-form:focus,
+.input-form:not(:placeholder-shown),
+.input-form:-webkit-autofill {
+  background-color: #edf2fe;
+}
+
+.input-form:focus + .label-form,
+.input-form:not(:placeholder-shown) + .label-form,
+.input-form:-webkit-autofill + .label-form {
+  transform: translateY(-2rem);
+}
+
+textarea::-webkit-scrollbar {
+  display: none;
+}
+
+.chat-pv-message:hover figure.fig-pic {
+  opacity: 0.5;
+}
+.chat-pv-message:hover .trash-icon {
+  opacity: 1;
+  display: block;
+}
+
+.big-nav-after {
+  color: #4c82f6;
+}
+
+.big-nav-after::after {
+  content: '';
+  transition: all ease-out 0.2s;
+  position: absolute;
+  left: 0;
+  bottom: -19px;
+  width: 100%;
+  height: 2px;
+  background-color: #4c82f6;
+}
+
+.w-inherit {
+  width: inherit;
+}
+.bg-imgage-chat2 {
+  background: #464545 url('/imgs/chat2.jpg') no-repeat center fixed;
+  background-size: cover;
+  background-blend-mode: multiply;
+}
+
+.bg-imgage-chat3 {
+  background: #464545 url('/imgs/chat3.jpg') no-repeat center fixed;
+  background-size: cover;
+  background-blend-mode: multiply;
+}
+
+.bg-land1 {
+  background: #464545 url('/imgs/top-land.jpg') no-repeat center fixed;
+  background-size: cover;
+}
+
+.bg-gradeint-1 {
+  /* background: rgb(26, 0, 36); */
+  background: linear-gradient(
+    90deg,
+    rgba(26, 0, 36, 1) 0%,
+    rgba(158, 0, 255, 1) 35%,
+    rgba(88, 9, 121, 1) 100%
+  ) !important;
+}
