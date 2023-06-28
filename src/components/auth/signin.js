@@ -3,10 +3,17 @@ import SubmitBtn from './submit-btn';
 import { useState } from 'react';
 import EVENTS from '../../config/events';
 import { useSockets } from '../../context/socketContext';
+import ApiResponse from './api-response';
+import { useRouter } from 'next/router';
 
 const SignIn = props => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [apiResponse, setApiResponse] = useState({
+    status: null,
+    message: null,
+  });
+  const router = useRouter();
   const { socket } = useSockets();
 
   const usernameChangeHander = e => setUsername(e.target.value);
@@ -26,8 +33,15 @@ const SignIn = props => {
         body: JSON.stringify(data.token),
       })
         .then(res => res.json())
-        .then(data => console.log(data));
+        .then(data => {
+          setApiResponse({ status: 'success', message: 'successfully login.' });
+          router.replace('/chat');
+        });
     });
+
+    socket.on(EVENTS.SERVER.AUTH.ERROR, res =>
+      setApiResponse({ status: 'error', message: res.message })
+    );
   };
 
   return (
@@ -47,6 +61,8 @@ const SignIn = props => {
         value={password}
       />
       <SubmitBtn text="Login" />
+
+      <ApiResponse status={apiResponse.status} message={apiResponse.message} />
     </form>
   );
 };

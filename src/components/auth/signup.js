@@ -3,6 +3,8 @@ import Input from './input';
 import SubmitBtn from './submit-btn';
 import { useSockets } from '../../context/socketContext';
 import EVENTS from '../../config/events';
+import ApiResponse from './api-response';
+import { useRouter } from 'next/router';
 
 const SignUp = props => {
   const [name, setName] = useState('');
@@ -11,6 +13,12 @@ const SignUp = props => {
   const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirm, setPasswordConfirm] = useState('');
+  const [apiResponse, setApiResponse] = useState({
+    status: null,
+    message: null,
+  });
+  const router = useRouter();
+
   const { socket } = useSockets();
 
   const nameChangeHander = e => setName(e.target.value);
@@ -31,11 +39,24 @@ const SignUp = props => {
 
     socket.emit(EVENTS.CLIENT.AUTH.SIGNUP, data);
 
-    socket.on(EVENTS.SERVER.AUTH.SUCCESS, response => {
-      console.log(response);
+    socket.on(EVENTS.SERVER.AUTH.SUCCESS, data => {
+      fetch('/api/set-cookie', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data.token),
+      })
+        .then(res => res.json())
+        .then(data => {
+          setApiResponse({ status: 'success', message: 'successfully login.' });
+          router.replace('/chat');
+        });
     });
 
-    socket.on(EVENTS.SERVER.AUTH.ERROR, err => console.log(err));
+    socket.on(EVENTS.SERVER.AUTH.ERROR, res =>
+      setApiResponse({ status: 'error', message: res.message })
+    );
   };
 
   return (
@@ -77,6 +98,7 @@ const SignUp = props => {
         value={passwordConfirm}
       />
       <SubmitBtn text="Sign up" />
+      <ApiResponse status={apiResponse.status} message={apiResponse.message} />
     </form>
   );
 };
