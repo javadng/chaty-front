@@ -1,6 +1,5 @@
 import NightsStayIcon from '@mui/icons-material/NightsStay';
 import LightModeIcon from '@mui/icons-material/LightMode';
-import classes from './them-selector.module.css';
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
 
@@ -24,18 +23,18 @@ const ThemeSelector = props => {
   };
 
   return (
-    <div className={classes.icon}>
+    <div className="icon">
       <NightsStayIcon className="dark:text-white" />
-      <label htmlFor="theme" className={classes.label}>
+      <label htmlFor="theme" className="label">
         <input
           onChange={themeChangeHandler}
           checked={localStorage.getItem('theme') === 'light'}
           type="checkbox"
           name="theme-selec"
-          className={classes.input}
+          className="input"
           id="theme"
         />
-        <span className={classes.slider}></span>
+        <span className="slider"></span>
       </label>
       <LightModeIcon className="dark:text-white" />
     </div>
