@@ -26,7 +26,7 @@ const IntroductionItem = props => {
     >
       <div className="dark:bg-slate-700 dark:text-white text-gray-700 bg-slate-100 shadow-md bg-opacity-80 rounded-2xl p-3">
         <figure className="w-full h-60 rounded-2xl overflow-hidden relative">
-          <Image src={props.srcImg} fill={true} />
+          <Image src={props.srcImg} fill={true} alt="some image" />
         </figure>
         <h3 className="my-3 text-lg font-bold">{props.title}</h3>
         <ul className="text-start pl-5">
