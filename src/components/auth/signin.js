@@ -45,7 +45,7 @@ const SignIn = props => {
     };
 
     sendRequest(
-      'https://chat-backend.iran.liara.run/api/v1/set-cookie',
+      'https://chat-backend.iran.liara.run/api/v1/auth/set-cookie',
       requestOptions
     );
     router.replace('/chat');
