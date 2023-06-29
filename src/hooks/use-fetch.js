@@ -17,9 +17,9 @@ const useFetch = () => {
     try {
       const res = await fetch(URL, options);
 
-      console.log('response', res);
+      if (!res.ok) throw new Error(`Error ${res.status}: ${res.statusText}`);
+
       const data = await res.json();
-      console.log('data', data);
 
       setApiResponse({
         status: 'success',
