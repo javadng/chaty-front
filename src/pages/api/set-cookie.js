@@ -17,5 +17,5 @@ export default async function handler(req, res) {
   if (process.env.NODE_ENV === 'production') cookieOption.secure = true;
   cookies.set('jwt', req.body.token, cookieOption);
 
-  res.status(200).json({ message: 'cookie set.' });
+  res.status(200).json({ message: 'successfully login and cookies set.' });
 }

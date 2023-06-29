@@ -6,15 +6,13 @@ import { useSockets } from '../../context/socketContext';
 import ApiResponse from './api-response';
 import { useRouter } from 'next/router';
 import { API_URL } from '../../config/config';
+import useFetch from '../../hooks/use-fetch';
 
 const SignIn = props => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [apiResponse, setApiResponse] = useState({
-    status: null,
-    message: null,
-    token: null,
-  });
+  const { apiResponse, sendRequest, setApiResponse } = useFetch();
+
   const router = useRouter();
   const { socket } = useSockets();
 
@@ -46,12 +44,8 @@ const SignIn = props => {
       body: JSON.stringify({ token: apiResponse.token }),
     };
 
-    fetch('/api/set-cookie', requestOptions)
-      .then(res => res.json())
-      .then(data => {
-        console.log(data);
-        router.replace('/chat');
-      });
+    sendRequest('/api/set-cookie', requestOptions);
+    router.replace('/chat');
   }
 
   return (
