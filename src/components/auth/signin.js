@@ -44,10 +44,8 @@ const SignIn = props => {
       body: JSON.stringify({ token: apiResponse.token }),
     };
 
-    sendRequest(
-      'https://chat-backend.iran.liara.run/api/v1/auth/set-cookie',
-      requestOptions
-    );
+    sendRequest('/api/set-cookie', requestOptions);
+
     router.replace('/chat');
   }
 

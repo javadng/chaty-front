@@ -17,7 +17,9 @@ const useFetch = () => {
     try {
       const res = await fetch(URL, options);
 
+      console.log('response', res);
       const data = await res.json();
+      console.log('data', data);
 
       setApiResponse({
         status: 'success',
@@ -30,7 +32,11 @@ const useFetch = () => {
         message: error.message,
         data: null,
       });
+
+      console.log('error: ', error);
     }
+
+    console.log('apiResponse var: ', apiResponse);
   };
 
   return { apiResponse, sendRequest, setApiResponse };
