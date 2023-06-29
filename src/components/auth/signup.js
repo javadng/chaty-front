@@ -16,6 +16,7 @@ const SignUp = props => {
   const [apiResponse, setApiResponse] = useState({
     status: null,
     message: null,
+    token: null,
   });
   const router = useRouter();
 
@@ -39,25 +40,33 @@ const SignUp = props => {
 
     socket.emit(EVENTS.CLIENT.AUTH.SIGNUP, data);
 
-    socket.on(EVENTS.SERVER.AUTH.SUCCESS, data => {
-      fetch('/api/set-cookie', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data.token),
+    socket.on(EVENTS.SERVER.AUTH.SUCCESS, data =>
+      setApiResponse({
+        status: 'success',
+        message: 'successfully login.',
+        token: data.token,
       })
-        .then(res => res.json())
-        .then(data => {
-          setApiResponse({ status: 'success', message: 'successfully login.' });
-          router.replace('/chat');
-        });
-    });
+    );
 
     socket.on(EVENTS.SERVER.AUTH.ERROR, res =>
       setApiResponse({ status: 'error', message: res.message })
     );
   };
+
+  if (apiResponse.token) {
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ token: apiResponse.token }),
+    };
+
+    fetch('/api/set-cookie', requestOptions)
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        router.replace('/chat');
+      });
+  }
 
   return (
     <form onSubmit={submitHandler} className="my-6 text-center">
