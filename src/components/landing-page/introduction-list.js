@@ -14,21 +14,21 @@ const IntroductionList = props => {
       </header>
       <div className="dark:text-black grid gap-8 grid-cols-[repeat(auto-fit,minmax(15rem,_1fr))] px-6">
         <IntroductionItem
-          srcImg="/imgs/landing2.jpg"
+          srcImg="/imgs/min/landing2-min.jpg"
           title="Embracing the Chat Experience"
           listItems={dummy_list}
           heuA="20"
           heuB="40"
         />
         <IntroductionItem
-          srcImg="/imgs/landing1.jpg"
+          srcImg="/imgs/min/landing1-min.jpg"
           title="A Journey of Communication"
           listItems={dummy_list}
           heuA="60"
           heuB="90"
         />
         <IntroductionItem
-          srcImg="/imgs/landing3.jpg"
+          srcImg="/imgs/min/landing3-min.jpg"
           title="Embracing the Chat Experience"
           listItems={dummy_list}
           heuA="340"

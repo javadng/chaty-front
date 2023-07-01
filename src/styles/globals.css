@@ -61,19 +61,19 @@ textarea::-webkit-scrollbar {
   width: inherit;
 }
 .bg-imgage-chat2 {
-  background: #464545 url('/imgs/chat2.jpg') no-repeat center fixed;
+  background: #464545 url('/imgs/min/chat2-min.jpg') no-repeat center fixed;
   background-size: cover;
   background-blend-mode: multiply;
 }
 
 .bg-imgage-chat3 {
-  background: #464545 url('/imgs/chat3.jpg') no-repeat center fixed;
+  background: #464545 url('/imgs/min/chat3-min.jpg') no-repeat center fixed;
   background-size: cover;
   background-blend-mode: multiply;
 }
 
 .bg-land1 {
-  background: #464545 url('/imgs/top-land.jpg') no-repeat center fixed;
+  background: #464545 url('/imgs/min/top-land-min.jpg') no-repeat center fixed;
   background-size: cover;
 }
 
