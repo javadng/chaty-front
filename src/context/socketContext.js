@@ -19,16 +19,6 @@ function SocketProvider(props) {
 
   socket.on(EVENTS.SERVER.ROOMS, rooms => setRooms(rooms));
 
-  // console.log(rooms);
-  // socket.on(EVENTS.SERVER.AUTH.SUCCESS, ({ data }) =>
-  //   setUsername(data.user.username)
-  // );
-
-  // socket.emit(EVENTS.CLIENT.AUTH.SENDBACK_JWT_COOKIE);
-  // socket.on(EVENTS.SERVER.AUTH.SENDBACK_JWT_COOKIE, data =>
-  //   setUsername(data.username)
-  // );
-
   return (
     <SocketContext.Provider
       value={{
