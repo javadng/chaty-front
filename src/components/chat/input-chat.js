@@ -20,10 +20,14 @@ const InputChat = props => {
     };
 
     socket.emit(EVENTS.CLIENT.SEND_PRIVATE_MESSAGE, data);
-
     setMessages([...messages, data]);
     setInputMessage('');
   };
+
+  socket.on(EVENTS.SERVER.PRIVATE_MESSAGE, data => {
+    console.log(data);
+    setMessages([...messages, data]);
+  });
 
   const textChangeHander = e => setInputMessage(e.target.value);
 

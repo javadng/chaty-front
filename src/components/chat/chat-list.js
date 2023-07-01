@@ -1,27 +1,13 @@
 import RecievedMessage from './recive-message';
 import SendMessage from './send-message';
 import { useSockets } from '../../context/socketContext';
-import EVENTS from '../../config/events';
 import InputChat from './input-chat';
 
 const ChatList = props => {
   const classNames = props.className || '';
 
   let messageListElem;
-  const { socket, rooms, messages, username, setMessages, roomId } =
-    useSockets();
-
-  // useEffect(() => {
-  //   if (!params.query.roomName) return;
-  //   const roomName = params.query.roomName;
-
-  //   // socket.emit(EVENTS.CLIENT.JOINED_ROOM, roomName);
-  //   socket.emit(EVENTS.CLIENT.JOIN_PRIVATE_CHAT, roomName);
-  // }, [params.query.userId, socket]);
-
-  socket.on(EVENTS.SERVER.PRIVATE_MESSAGE, data => {
-    setMessages([...messages, data]);
-  });
+  const { rooms, messages, username, roomId } = useSockets();
 
   let roomNameActive = '';
 

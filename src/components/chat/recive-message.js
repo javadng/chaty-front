@@ -5,11 +5,11 @@ const RecievedMessage = props => {
     minute: '2-digit',
   }).format(messageDate);
   return (
-    <li className="dark:text-white relative my-8">
+    <li className="dark:text-white my-4">
       <span className="dark:bg-dark bg-dark-c text-white rounded-xl inline-block py-2 px-4">
         {props.message}
+        <span className="block text-xs mt-1">{date}</span>
       </span>
-      <span className="absolute  left-1 -top-6 text-sm">{date}</span>
     </li>
   );
 };

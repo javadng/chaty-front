@@ -6,13 +6,11 @@ const SendMessage = props => {
   }).format(messageDate);
 
   return (
-    <li className=" my-8 text-end relative">
-      <span className="bg-royal-purp  text-dark-c rounded-xl inline-block  py-2 px-4">
+    <li className="my-4 text-end">
+      <span className="bg-royal-purp  text-dark-c rounded-xl inline-block py-2 px-4">
         {/* I&apos;m good */}
         {props.message}
-        <span className="absolute w-full left-1 -top-6 dark:text-white text-sm">
-          {date}
-        </span>
+        <span className="block text-xs mt-1">{date}</span>
       </span>
     </li>
   );

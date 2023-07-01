@@ -28,6 +28,7 @@ function SocketProvider(props) {
   // socket.on(EVENTS.SERVER.AUTH.SENDBACK_JWT_COOKIE, data =>
   //   setUsername(data.username)
   // );
+
   return (
     <SocketContext.Provider
       value={{

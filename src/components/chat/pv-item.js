@@ -2,14 +2,18 @@ import Image from 'next/image';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useRouter } from 'next/router';
 import { useSockets } from '../../context/socketContext';
+import EVENTS from '../../config/events';
 
 const PvItem = props => {
   const router = useRouter();
-  const { setRoomId, setMessages } = useSockets();
+  const { socket, setRoomId, setMessages } = useSockets();
 
   const showChatMessage = e => {
     if (e.target.nodeName === 'path') return;
     setRoomId(props.roomId);
+
+    // join to room
+    socket.emit(EVENTS.CLIENT.JOIN_PRIVATE_CHAT, props.roomId);
 
     setMessages([]);
     if (window.innerWidth > 800) {
